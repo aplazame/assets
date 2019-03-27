@@ -11,14 +11,23 @@ workflows:
 
     - s3/deploy:
         do_deploy:
-        
-        - attach_workspace:
-            at: /tmp/workspace
 
+        - run:
+            name: ls -la
+            command: ls -la
+        
         - s3/folder:
             bucket_name: cdn.aplazame.com
             src: banners
             dest: assets/banners
+
+        filters:
+            branches:
+                only:
+                - master
+
+    - s3/deploy:
+        do_deploy:
 
         - s3/folder:
             bucket_name: cdn.aplazame.com

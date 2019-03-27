@@ -11,6 +11,12 @@ jobs:
         steps:
         - checkout
 
+        - persist_to_workspace:
+            root: ./
+            paths:
+            - banners
+            - logos
+
 workflows:
   version: 2
   deploy:
@@ -22,16 +28,11 @@ workflows:
         - build
 
         do_deploy:
-        
+
         - s3/folder:
             bucket_name: cdn.aplazame.com
             src: banners
             dest: assets/banners
-
-        - s3/folder:
-            bucket_name: cdn.aplazame.com
-            src: logos
-            dest: assets/logos
 
         filters:
             branches:

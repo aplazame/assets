@@ -4,17 +4,22 @@ version: 2.1
 orbs:
     s3: aplazame/s3@0.0.14
 
+jobs:
+    build:
+        steps:
+        - checkout
+
 workflows:
   version: 2
   deploy:
     jobs:
+    - build
 
     - s3/deploy:
-        do_deploy:
+        requires:
+        - build
 
-        - run:
-            name: ls -la
-            command: ls -la
+        do_deploy:
         
         - s3/folder:
             bucket_name: cdn.aplazame.com
@@ -27,6 +32,9 @@ workflows:
                 - master
 
     - s3/deploy:
+        requires:
+        - build
+
         do_deploy:
 
         - s3/folder:

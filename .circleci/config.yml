@@ -11,6 +11,9 @@ workflows:
 
     - s3/deploy:
         do_deploy:
+        
+        - attach_workspace:
+            at: /tmp/workspace
 
         - s3/folder:
             bucket_name: cdn.aplazame.com

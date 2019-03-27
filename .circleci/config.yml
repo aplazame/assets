@@ -1,0 +1,28 @@
+
+version: 2.1
+
+orbs:
+    s3: aplazame/s3@0.0.14
+
+workflows:
+  version: 2
+  deploy:
+    jobs:
+
+    - s3/deploy:
+        do_deploy:
+
+        - s3/folder:
+            bucket_name: cdn.aplazame.com
+            src: banners
+            dest: assets/banners
+
+        - s3/folder:
+            bucket_name: cdn.aplazame.com
+            src: logos
+            dest: assets/logos
+
+        filters:
+            branches:
+                only:
+                - master

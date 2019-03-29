@@ -41,8 +41,8 @@ workflows:
 
         - s3/file:
             bucket_name: cdn.aplazame.com
-            src: demo.css
-            dest: assets/demo.css
+            src: images.css
+            dest: assets/images.css
 
         filters:
             branches:

@@ -15,7 +15,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "prebuild": "sass --indented .make/demo/demo.sass > demo.css",
+    "prebuild": "sass --indented .make/demo/images.sass > images.css",
     "build": "node .make/build.js"
   },
   "repository": {

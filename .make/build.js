@@ -64,5 +64,5 @@ async function writeIndex (cwd) {
 
 Promise.all([
   writeIndex('logos'),
-  glob('banners/*').then( (directories) => Parole.all(directories.map(writeIndex)) )
+  glob('banners/*').then( (directories) => Promise.all(directories.map(writeIndex)) )
 ])

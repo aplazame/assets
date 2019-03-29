@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>${ page.title }</title>
+
+    <link rel="stylesheet" href="/assets/demo.css" />
+</head>
+<body>
+  <table class="images-list">
+    <thead>
+      <tr>
+        <th>Preview</th>
+        <th>Size</th>
+        <th>URL</th>
+      </tr>
+    </thead>
+    <tbody>
+      $each{ file in files }
+      <tr class="_row $if{ /white|light/.test(file.path) }_bg-dark{/}">
+          <td class="_img">
+            <a href="$cdn{ file }" target="_black">
+              <img src="${ file.path }"/>
+            </a>
+          </td>
+          <td>
+            <table>
+              <tr>
+                <td>width:</td>
+                <td>${ file.dimensions.width }px</td>
+              </tr>
+              <tr>
+                <td>height:</td>
+                <td>${ file.dimensions.height }px</td>
+              </tr>
+            </table>
+          </td>
+          <td>
+            <a href="$cdn{ file }" class="_link" target="_black">$cdn{ file }</a>
+          </td>
+      </tr>
+      {/}
+    </tbody>
+  </table>
+</body>
+</html>

@@ -1,0 +1,36 @@
+{
+  "name": "assets",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "ws": "^6.2.1"
+  },
+  "devDependencies": {
+    "@triskel/template": "1.0.8",
+    "glob": "7.1.3",
+    "http-server": "0.11.1",
+    "image-size": "0.7.2",
+    "sass": "1.17.3"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prebuild": "sass --indented .make/demo/demo.sass > demo.css",
+    "build": "node .make/build.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aplazame/assets.git"
+  },
+  "keywords": [
+    "aplazame",
+    "assets",
+    "resources"
+  ],
+  "author": "",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/aplazame/assets/issues"
+  },
+  "homepage": "https://github.com/aplazame/assets#readme"
+}

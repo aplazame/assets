@@ -31,24 +31,18 @@ workflows:
 
         - s3/folder:
             bucket_name: cdn.aplazame.com
-            src: banners
-            dest: assets/banners
-
-        filters:
-            branches:
-                only:
-                - master
-
-    - s3/deploy:
-        requires:
-        - build
-
-        do_deploy:
+            src: logos
+            dest: assets/logos
 
         - s3/folder:
             bucket_name: cdn.aplazame.com
-            src: logos
-            dest: assets/logos
+            src: banners
+            dest: assets/banners
+
+        - s3/file:
+            bucket_name: cdn.aplazame.com
+            src: demo.css
+            dest: assets/demo.css
 
         filters:
             branches:

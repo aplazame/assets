@@ -16,6 +16,7 @@ jobs:
             paths:
             - banners
             - logos
+            - images.css
 
 workflows:
   version: 2

@@ -32,6 +32,9 @@ table.images-list tr._row > td._img {
   text-align: center;
   padding: 12px;
 }
+table.images-list tr._row > td._img img {
+  max-width: 40vw;
+}
 table.images-list tr._bg-dark td._img {
   background-color: #333a3e;
 }

@@ -15,7 +15,7 @@ template.cmd('cdn', function (expression, scope) {
 
     var file = this.eval(expression)(scope)
     console.log('url', file)
-    return path.join('https://cdn.aplazame.com/assets', scope.cwd, file.path)
+    return 'https://' + path.join('cdn.aplazame.com/assets', scope.cwd, file.path)
 
 }, true)
 

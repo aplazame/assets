@@ -81,7 +81,7 @@ async function writeImagesTable (cwd) {
         title: 'Aplazame | ' + cwd,
       },
       files: files.map(function (file) {
-        file.path = path.join(BASE_HREF, cwd, file.path)
+        file.path = BASE_HREF + path.join(cwd, file.path)
         return file
       }),
     })

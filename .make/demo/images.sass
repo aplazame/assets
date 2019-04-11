@@ -5,6 +5,9 @@ html, body
   margin: 0
   padding: 0
 
+*, *::before, *::after
+  box-sizing: border-box
+
 body
   font-family: sans-serif
   font-size: 16px
@@ -60,6 +63,10 @@ table.images-list
     border-radius: 3px
     box-shadow: 0 0 0 1px rgba($grey-darken, 0.12), 0 1px 2px 0 rgba($grey-darken, 0.2)
 
+  tr, th, td
+    padding: 0
+    margin: 0
+
   th
     height: 64px
     font-size: 20px
@@ -78,8 +85,39 @@ table.images-list
     background-color: #333a3e
 
   tr._link td
-    padding: 8px 16px 12px
-    border-bottom: 1px solid #eee
+    border-top: 1px solid #eee
+    border-bottom: 1px solid #ddd
+
+    input
+      margin: 0
+      padding: 0 56px 0 16px
+      width: 100%
+      font-size: 100%
+      outline: 0
+      border: 0
+      height: 40px
+
+    position: relative
+    button
+      // display: flex
+      // justify-content: center
+      // align-items: center
+      position: absolute
+      padding: 0
+      margin: 0
+      top: 0
+      right: 0
+      width: 40px
+      height: 40px
+      font-size: 28px
+      cursor: pointer
+      background: transparent
+      border: 0
+      border-left: 1px solid #eee
+      outline: 0
+
+      &:active
+        background: rgba(#333a3e, 0.3)
 
   a._link
     color: #267bbd

@@ -28,9 +28,19 @@
     </tr>
     <tr class="_link">
       <td colspan="2">
-        <a href="${ file.fullpath }" class="_link" target="_black">${ file.fullpath }</a>
+        <input id="input-${$index}" type="text" value="${ file.fullpath }"></input>
+        <!-- <button data-clipboard-target="#input-${$index}">⎘</button> -->
       </td>
     </tr>
     {/}
   </tbody>
   </table>
+
+  <script src="https://cdn.rawgit.com/zenorocha/clipboard.js/v2.0.0/dist/clipboard.min.js" async defer></script>
+
+
+  <!-- <script>
+    [].forEach.call(document.querySelectorAll('td > input'), function (input_el) {
+      new Clipboard(input_el)
+    })
+  </script> -->

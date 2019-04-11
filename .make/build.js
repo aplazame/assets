@@ -106,8 +106,27 @@ async function writeIndex () {
   )
 }
 
+async function writeBannersIndex () {
+  var index_template = await _readTextFile( path.join(__dirname, 'demo/images-index.html') )
+  var readme_md = await _readTextFile( path.join(__dirname, '../banners/README.md') )
+  
+  await _whiteTextFile(
+    path.join(__dirname, '../index.html'),
+    template(index_template, {
+      page: {
+        BASE_HREF,
+        CSS_BASE,
+        title: 'Aplazame | Banners',
+        body: marked(readme_md),
+        body_class: '_md-index',
+      },
+    })
+  )
+}
+
 Promise.all([
   writeImagesTable('logos'),
   glob('banners/*').then( (directories) => Promise.all(directories.map(writeImagesTable)) ),
   writeIndex(),
+  writeBannersIndex(),
 ])

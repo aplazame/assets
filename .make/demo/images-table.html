@@ -10,8 +10,8 @@
     $each{ file in files }
     <tr class="_row $if{ /white|light/.test(file.path) }_bg-dark{/}">
         <td class="_img">
-          <a href="${ file.path }" target="_black">
-            <img src="${ file.path }"/>
+          <a href="${ cwd + '/' + file.path }" target="_black">
+            <img src="${ cwd + '/' + file.path }"/>
           </a>
         </td>
         <td>

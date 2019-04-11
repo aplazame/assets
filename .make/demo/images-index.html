@@ -9,7 +9,7 @@
 
   <link rel="stylesheet" href="${ page.CSS_BASE }images.css" />
 </head>
-<body class="${ page.body_class }">
+<body class="${ page.body_class || '' }">
   <header>
     <ul class="breadcrumb">
       $each{ link in breadcrumb }

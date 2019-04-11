@@ -45,9 +45,18 @@ table.images-list a._link {
 }
 
 body._md-index {
-  padding: 8px;
   max-width: 960px;
   margin: 32px auto 128px;
+  padding: 8px;
+}
+@media (min-width: 768px) {
+  body._md-index {
+    padding: 32px;
+  }
+}
+body._md-index h2 {
+  font-size: 24px;
+  font-weight: 500;
 }
 body._md-index a {
   display: block;

@@ -61,7 +61,7 @@ function _getBreadcrumb (cwd) {
     breadcrumb.push({
       href: 
         i + 1 < list.length
-          ? (breadcrumb[i - 1] ? (breadcrumb[i - 1].href + slug + '/') : BASE_HREF)
+          ? (breadcrumb[i - 1] ? (breadcrumb[i - 1].href + slug + '/') : '/')
           : null
         ,
       label: slug[0].toUpperCase() + slug.substr(1),
@@ -141,7 +141,7 @@ async function writeBannersIndex () {
     path.join(__dirname, '../banners/index.html'),
     renderIndex({
       breadcrumb: [
-        { href: '.', label: 'Assets' },
+        { href: '/', label: 'Assets' },
         { label: 'Banners' },
       ],
       page: {

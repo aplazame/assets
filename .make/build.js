@@ -61,7 +61,7 @@ function _getBreadcrumb (cwd) {
     breadcrumb.push({
       href: 
         i + 1 < list.length
-          ? (breadcrumb[i - 1] ? (breadcrumb[i - 1].href + slug + '/') : '/')
+          ? (breadcrumb[i - 1] ? (breadcrumb[i - 1].href + slug + '/') : BASE_HREF)
           : null
         ,
       label: slug[0].toUpperCase() + slug.substr(1),

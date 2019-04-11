@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>${ page.title }</title>
+  <base href="${ page.BASE_HREF }">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>${ page.title }</title>
 
-    <link rel="stylesheet" href="/assets/images.css" />
+  <link rel="stylesheet" href="/images.css" />
 </head>
 <body>
   <table class="images-list">
@@ -21,7 +22,7 @@
       $each{ file in files }
       <tr class="_row $if{ /white|light/.test(file.path) }_bg-dark{/}">
           <td class="_img">
-            <a href="$cdn{ file }" target="_black">
+            <a href="${ file.path }" target="_black">
               <img src="${ file.path }"/>
             </a>
           </td>
@@ -38,7 +39,7 @@
             </table>
           </td>
           <td>
-            <a href="$cdn{ file }" class="_link" target="_black">$cdn{ file }</a>
+            <a href="${ file.path }" class="_link" target="_black">${ file.path }</a>
           </td>
       </tr>
       {/}

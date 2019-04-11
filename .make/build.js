@@ -1,4 +1,6 @@
 
+require('dotenv').config()
+
 const fs = require('fs')
 const path = require('path')
 const { promisify } = require('util')
@@ -11,6 +13,10 @@ const sizeOf = promisify(_sizeOf)
 
 const template = require('@triskel/template')
 const marked = require('marked')
+
+const BASE_HREF = process.env.BASE_HREF || 'https://cdn.aplazame.com/assets/'
+
+console.log('BASE_HREF', BASE_HREF)
 
 template.cmd('cdn', function (expression, scope) {
 
@@ -54,15 +60,28 @@ async function writeImagesTable (cwd) {
   console.log(`\nnum_files in '${ cwd }': ${ num_files }\n`)
 
   var index_template = await _readTextFile( path.join(__dirname, 'demo/images-table.html') )
+  var index_template_md = await _readTextFile( path.join(__dirname, 'demo/images-table.md') )
   
+  await _whiteTextFile(
+    path.join(cwd, 'README.md'),
+    template(index_template_md, {
+      cwd: cwd,
+      files: files,
+    })
+  )
+
   await _whiteTextFile(
     path.join(cwd, 'index.html'),
     template(index_template, {
       cwd: cwd,
       page: {
-        title: 'Aplazame | ' + cwd
+        BASE_HREF,
+        title: 'Aplazame | ' + cwd,
       },
-      files: files,
+      files: files.map(function (file) {
+        file.path = path.join(BASE_HREF, cwd, file.path)
+        return file
+      }),
     })
   )
 }
@@ -75,8 +94,10 @@ async function writeIndex () {
     path.join(__dirname, '../index.html'),
     template(index_template, {
       page: {
+        BASE_HREF,
         title: 'Aplazame | Assets',
         body: marked(readme_md),
+        body_class: '_md-index',
       },
     })
   )

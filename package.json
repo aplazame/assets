@@ -8,6 +8,7 @@
   },
   "devDependencies": {
     "@triskel/template": "1.0.8",
+    "dotenv": "^7.0.0",
     "glob": "7.1.3",
     "http-server": "0.11.1",
     "image-size": "0.7.2",

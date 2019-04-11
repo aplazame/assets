@@ -95,8 +95,8 @@ async function writeImagesTable (cwd) {
         BASE_HREF,
         CSS_BASE,
         title: 'Aplazame | ' + cwd,
+        main: renderTable({ cwd, files }),
       },
-      main: renderTable({ cwd, files }),
     })
   )
 }

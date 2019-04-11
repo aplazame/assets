@@ -111,7 +111,7 @@ async function writeBannersIndex () {
   var readme_md = await _readTextFile( path.join(__dirname, '../banners/README.md') )
   
   await _whiteTextFile(
-    path.join(__dirname, '../index.html'),
+    path.join(__dirname, '../banners/index.html'),
     template(index_template, {
       page: {
         BASE_HREF,

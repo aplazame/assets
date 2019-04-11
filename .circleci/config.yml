@@ -17,6 +17,7 @@ jobs:
             - banners
             - logos
             - images.css
+            - index.html
 
 workflows:
   version: 2

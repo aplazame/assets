@@ -54,6 +54,7 @@ async function writeImagesTable (cwd) {
     num_files++
     return {
       path: filepath,
+      fullpath: BASE_HREF + path.join(cwd, filepath),
       dimensions: await sizeOf( path.join(cwd, filepath) ),
     }
   }) )
@@ -67,7 +68,7 @@ async function writeImagesTable (cwd) {
     path.join(cwd, 'README.md'),
     template(index_template_md, {
       cwd: cwd,
-      files: files,
+      files,
     })
   )
 
@@ -80,10 +81,7 @@ async function writeImagesTable (cwd) {
         CSS_BASE,
         title: 'Aplazame | ' + cwd,
       },
-      files: files.map(function (file) {
-        file.path = BASE_HREF + path.join(cwd, file.path)
-        return file
-      }),
+      files,
     })
   )
 }

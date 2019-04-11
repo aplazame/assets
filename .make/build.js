@@ -141,7 +141,7 @@ async function writeBannersIndex () {
     path.join(__dirname, '../banners/index.html'),
     renderIndex({
       breadcrumb: [
-        { href: '/', label: 'Assets' },
+        { href: BASE_HREF, label: 'Assets' },
         { label: 'Banners' },
       ],
       page: {

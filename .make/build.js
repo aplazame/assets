@@ -15,6 +15,7 @@ const template = require('@triskel/template')
 const marked = require('marked')
 
 const BASE_HREF = process.env.BASE_HREF || 'https://cdn.aplazame.com/assets/'
+const CSS_BASE = process.env.CSS_BASE || '/assets/'
 
 console.log('BASE_HREF', BASE_HREF)
 
@@ -76,6 +77,7 @@ async function writeImagesTable (cwd) {
       cwd: cwd,
       page: {
         BASE_HREF,
+        CSS_BASE,
         title: 'Aplazame | ' + cwd,
       },
       files: files.map(function (file) {
@@ -95,6 +97,7 @@ async function writeIndex () {
     template(index_template, {
       page: {
         BASE_HREF,
+        CSS_BASE,
         title: 'Aplazame | Assets',
         body: marked(readme_md),
         body_class: '_md-index',

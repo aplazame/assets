@@ -1,51 +1,15 @@
 
 Preview | Size | URL
 ------- | ---- | ---
-[![](aplazame-logo-web-black.png)](aplazame-logo-web-black.png) | <pre><code>
-width: 405px
-height: 105px
-</code></pre> | [aplazame-logo-web-black.png](aplazame-logo-web-black.png)
-[![](aplazame-logo-web-color.png)](aplazame-logo-web-color.png) | <pre><code>
-width: 405px
-height: 105px
-</code></pre> | [aplazame-logo-web-color.png](aplazame-logo-web-color.png)
-[![](Favicon.png)](Favicon.png) | <pre><code>
-width: 16px
-height: 16px
-</code></pre> | [Favicon.png](Favicon.png)
-[![](Favicon@2x.png)](Favicon@2x.png) | <pre><code>
-width: 32px
-height: 32px
-</code></pre> | [Favicon@2x.png](Favicon@2x.png)
-[![](logo-black.svg)](logo-black.svg) | <pre><code>
-width: 100px
-height: 100px
-</code></pre> | [logo-black.svg](logo-black.svg)
-[![](logo-brand.svg)](logo-brand.svg) | <pre><code>
-width: 100px
-height: 100px
-</code></pre> | [logo-brand.svg](logo-brand.svg)
-[![](logo-white.svg)](logo-white.svg) | <pre><code>
-width: 100px
-height: 100px
-</code></pre> | [logo-white.svg](logo-white.svg)
-[![](logotipo-brand.svg)](logotipo-brand.svg) | <pre><code>
-width: 400px
-height: 104px
-</code></pre> | [logotipo-brand.svg](logotipo-brand.svg)
-[![](logotipo-dark.svg)](logotipo-dark.svg) | <pre><code>
-width: 400px
-height: 104px
-</code></pre> | [logotipo-dark.svg](logotipo-dark.svg)
-[![](logotipo-light.svg)](logotipo-light.svg) | <pre><code>
-width: 400px
-height: 104px
-</code></pre> | [logotipo-light.svg](logotipo-light.svg)
-[![](logotipo-white.svg)](logotipo-white.svg) | <pre><code>
-width: 400px
-height: 104px
-</code></pre> | [logotipo-white.svg](logotipo-white.svg)
-[![](small-version-logo-web-color.png)](small-version-logo-web-color.png) | <pre><code>
-width: 126px
-height: 34px
-</code></pre> | [small-version-logo-web-color.png](small-version-logo-web-color.png)
+[![](aplazame-logo-web-black.png)](aplazame-logo-web-black.png) | width: 405px<br>height: 105px | [aplazame-logo-web-black.png](aplazame-logo-web-black.png)
+[![](aplazame-logo-web-color.png)](aplazame-logo-web-color.png) | width: 405px<br>height: 105px | [aplazame-logo-web-color.png](aplazame-logo-web-color.png)
+[![](Favicon.png)](Favicon.png) | width: 16px<br>height: 16px | [Favicon.png](Favicon.png)
+[![](Favicon@2x.png)](Favicon@2x.png) | width: 32px<br>height: 32px | [Favicon@2x.png](Favicon@2x.png)
+[![](logo-black.svg)](logo-black.svg) | width: 100px<br>height: 100px | [logo-black.svg](logo-black.svg)
+[![](logo-brand.svg)](logo-brand.svg) | width: 100px<br>height: 100px | [logo-brand.svg](logo-brand.svg)
+[![](logo-white.svg)](logo-white.svg) | width: 100px<br>height: 100px | [logo-white.svg](logo-white.svg)
+[![](logotipo-brand.svg)](logotipo-brand.svg) | width: 400px<br>height: 104px | [logotipo-brand.svg](logotipo-brand.svg)
+[![](logotipo-dark.svg)](logotipo-dark.svg) | width: 400px<br>height: 104px | [logotipo-dark.svg](logotipo-dark.svg)
+[![](logotipo-light.svg)](logotipo-light.svg) | width: 400px<br>height: 104px | [logotipo-light.svg](logotipo-light.svg)
+[![](logotipo-white.svg)](logotipo-white.svg) | width: 400px<br>height: 104px | [logotipo-white.svg](logotipo-white.svg)
+[![](small-version-logo-web-color.png)](small-version-logo-web-color.png) | width: 126px<br>height: 34px | [small-version-logo-web-color.png](small-version-logo-web-color.png)

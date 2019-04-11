@@ -1,7 +1,4 @@
 
 Preview | Size | URL
 ------- | ---- | ---$each{ file in files }
-[![](${ file.path })](${ file.path }) | <pre><code>
-width: ${ file.dimensions.width }px
-height: ${ file.dimensions.height }px
-</code></pre> | [${ file.path }](${ file.path }){/}
+[![](${ file.path })](${ file.path }) | width: ${ file.dimensions.width }px<br>height: ${ file.dimensions.height }px | [${ file.path }](${ file.path }){/}

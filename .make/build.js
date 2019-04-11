@@ -56,6 +56,20 @@ function _whiteTextFile (filepath, data) {
     })
 }
 
+function _getBreadcrumb (cwd) {
+  return ('assets/' + cwd).split('/').reduce(function(breadcrumb, slug, i, list) {
+    breadcrumb.push({
+      href: 
+        i + 1 < list.length
+          ? (breadcrumb[i - 1] ? (breadcrumb[i - 1].href + slug + '/') : '/')
+          : null
+        ,
+      label: slug[0].toUpperCase() + slug.substr(1),
+    })
+    return breadcrumb
+  }, [])
+}
+
 async function writeImagesTable (cwd) {
   console.log('writeImagesTable', cwd)
 
@@ -90,7 +104,7 @@ async function writeImagesTable (cwd) {
     path.join(cwd, 'index.html'),
     renderIndex({
       cwd,
-      breadcrumb: [],
+      breadcrumb: _getBreadcrumb(cwd),
       page: {
         BASE_HREF,
         CSS_BASE,
@@ -108,7 +122,6 @@ async function writeIndex () {
   await _whiteTextFile(
     path.join(__dirname, '../index.html'),
     renderIndex({
-      breadcrumb: [],
       page: {
         BASE_HREF,
         CSS_BASE,
@@ -127,8 +140,10 @@ async function writeBannersIndex () {
   await _whiteTextFile(
     path.join(__dirname, '../banners/index.html'),
     renderIndex({
-      cwd: 'banners',
-      breadcrumb: [],
+      breadcrumb: [
+        { href: '/', label: 'Assets' },
+        { label: 'Banners' },
+      ],
       page: {
         BASE_HREF: BASE_HREF + 'banners/',
         CSS_BASE,

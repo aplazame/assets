@@ -11,10 +11,46 @@ body
   color: #333a3e
   background: #f7f7f7
 
-table.images-list
-  max-width: 800px
-  margin: 64px auto
+  padding: 8px
+  @media (min-width: 768px)
+    padding: 32px
 
+main, header
+  display: block
+  max-width: 800px
+
+header
+  display: block
+  max-width: 800px
+  margin: 0 auto
+
+  ul.breadcrumb
+    margin: 0
+    padding: 10px 16px
+    list-style: none
+    background-color: #eee
+
+    li
+      display: inline
+      font-size: 18px
+    
+    li + li:before
+      padding: 8px
+      color: black
+      content: "/\00a0"
+
+    li a[href]
+      color: #0275d8
+      text-decoration: none
+
+    li a[href]:hover
+      color: #01447e
+      text-decoration: underline
+
+main
+  margin: 16px auto 128px
+
+table.images-list
   table-layout: fixed
   border-collapse: collapse
 
@@ -46,33 +82,21 @@ table.images-list
     border-bottom: 1px dotted #267bbd
 
 body._md-index
-  padding: 8px
-  @media (min-width: 768px)
-    padding: 32px
-
-  main, header
-    display: block
-    max-width: 800px
-    
-  header
-    margin: 0 auto
-
   main
-    margin: 32px auto 128px
 
-  h2
-    font-size: 24px
-    font-weight: 500
+    h2
+      font-size: 24px
+      font-weight: 500
 
-  a
-    display: block
-    background: white
-    border-radius: 3px
-    box-shadow: 0 0 0 1px rgba($grey-darken, 0.12), 0 1px 2px 0 rgba($grey-darken, 0.2)
-    padding: 8px
+    a
+      display: block
+      background: white
+      border-radius: 3px
+      box-shadow: 0 0 0 1px rgba($grey-darken, 0.12), 0 1px 2px 0 rgba($grey-darken, 0.2)
+      padding: 8px
 
-    &:hover
-      box-shadow: 0 0 0 1px rgba($grey-darken, 0.12), 0 1px 3px 0 rgba($grey-darken, 0.4)
+      &:hover
+        box-shadow: 0 0 0 1px rgba($grey-darken, 0.12), 0 1px 3px 0 rgba($grey-darken, 0.4)
 
-    img
-      max-width: 100%
+      img
+        max-width: 100%

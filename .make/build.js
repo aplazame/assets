@@ -114,7 +114,7 @@ async function writeBannersIndex () {
     path.join(__dirname, '../banners/index.html'),
     template(index_template, {
       page: {
-        BASE_HREF,
+        BASE_HREF: BASE_HREF + 'banners/',
         CSS_BASE,
         title: 'Aplazame | Banners',
         body: marked(readme_md),

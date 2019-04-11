@@ -17,11 +17,11 @@ body
 
 main, header
   display: block
-  max-width: 800px
+  max-width: 960px
 
 header
   display: block
-  max-width: 800px
+  max-width: 960px
   margin: 0 auto
 
   ul.breadcrumb
@@ -51,6 +51,7 @@ main
   margin: 16px auto 128px
 
 table.images-list
+  min-width: 100%
   table-layout: fixed
   border-collapse: collapse
 
@@ -75,6 +76,10 @@ table.images-list
 
   tr._bg-dark td._img
     background-color: #333a3e
+
+  tr._link td
+    padding: 8px 16px 12px
+    border-bottom: 1px solid #eee
 
   a._link
     color: #267bbd

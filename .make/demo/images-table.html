@@ -3,7 +3,6 @@
     <tr>
       <th>Preview</th>
       <th>Size</th>
-      <th>URL</th>
     </tr>
   </thead>
   <tbody>
@@ -26,9 +25,11 @@
             </tr>
           </table>
         </td>
-        <td>
-          <a href="${ file.fullpath }" class="_link" target="_black">${ file.fullpath }</a>
-        </td>
+    </tr>
+    <tr class="_link">
+      <td colspan="2">
+        <a href="${ file.fullpath }" class="_link" target="_black">${ file.fullpath }</a>
+      </td>
     </tr>
     {/}
   </tbody>

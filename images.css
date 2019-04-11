@@ -46,6 +46,9 @@ table.images-list a._link {
 
 body._md-index {
   padding: 8px;
+  max-width: 960px;
+  margin-left: auto;
+  margin-right: auto;
 }
 body._md-index a {
   display: block;

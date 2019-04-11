@@ -7,9 +7,12 @@ orbs:
 jobs:
     build:
         docker:
-        - image: aplazame/alpine:0.1.7-aws
+        - image: aplazame/alpine:0.1.7-node
         steps:
         - checkout
+
+        - npm install
+        - npm run build
 
         - persist_to_workspace:
             root: ./

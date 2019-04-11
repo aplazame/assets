@@ -1,2 +1,5 @@
 /node_modules
 /.env
+/logos/index.html
+/banners/index.html
+/banners/*/index.html

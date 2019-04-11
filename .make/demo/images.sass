@@ -54,8 +54,8 @@ main
   margin: 16px auto 128px
 
 table.images-list
-  min-width: 100%
-  table-layout: fixed
+  width: 100%
+  // table-layout: fixed
   border-collapse: collapse
 
   & > tbody
@@ -79,7 +79,18 @@ table.images-list
       padding: 12px
 
       img
-        max-width: 40vw
+        max-width: 100%
+        max-height: 240px
+
+    &._dimensions
+      width: 1%
+    
+    pre, code
+      margin: 0
+      padding: 0
+
+    code
+      font-size: 14px
 
   tr._bg-dark td._img
     background-color: #333a3e

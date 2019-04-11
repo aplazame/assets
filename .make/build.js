@@ -29,12 +29,24 @@ template.cmd('cdn', function (expression, scope) {
 
 function _readTextFile (filepath) {
     return new Promise(function (resolve, reject) {
-        fs.readFile(filepath, 'utf8', function (err, data) {
+        fs.readFile( path.join(__dirname, filepath), 'utf8', function (err, data) {
             if( err ) return reject(err)
             resolve(String(data))
         })
     })
 }
+
+async function _loadTemplate(filepath) {
+  var code = await _readTextFile(filepath)
+  return template(code)
+  // return (function (render) {
+  //   return function (data, target) {
+  //     console.log('rendering', filepath, 'to', target)
+  //     return render(data)
+  //   }
+  // })( template(code) )
+}
+
 function _whiteTextFile (filepath, data) {
     return new Promise(function (resolve, reject) {
         fs.writeFile(filepath, data, { encoding: 'utf8' }, function (err, data) {
@@ -45,6 +57,8 @@ function _whiteTextFile (filepath, data) {
 }
 
 async function writeImagesTable (cwd) {
+  console.log('writeImagesTable', cwd)
+
   var filepaths = await glob('**/*.{png,svg}', {
     cwd: cwd,
   }),
@@ -61,43 +75,45 @@ async function writeImagesTable (cwd) {
 
   console.log(`\nnum_files in '${ cwd }': ${ num_files }\n`)
 
-  var index_template = await _readTextFile( path.join(__dirname, 'demo/images-table.html') )
-  var index_template_md = await _readTextFile( path.join(__dirname, 'demo/images-table.md') )
+  let [renderIndex, renderTable, renderMD] = await Promise.all([
+    'demo/images-index.html',
+    'demo/images-table.html',
+    'demo/images-table.md',
+  ].map(_loadTemplate) )
   
   await _whiteTextFile(
     path.join(cwd, 'README.md'),
-    template(index_template_md, {
-      cwd: cwd,
-      files,
-    })
+    renderMD({ cwd, files })
   )
 
   await _whiteTextFile(
     path.join(cwd, 'index.html'),
-    template(index_template, {
-      cwd: cwd,
+    renderIndex({
+      cwd,
+      breadcrumb: [],
       page: {
         BASE_HREF,
         CSS_BASE,
         title: 'Aplazame | ' + cwd,
       },
-      files,
+      main: renderTable({ cwd, files }),
     })
   )
 }
 
 async function writeIndex () {
-  var index_template = await _readTextFile( path.join(__dirname, 'demo/images-index.html') )
-  var readme_md = await _readTextFile( path.join(__dirname, '../README.md') )
+  var renderIndex = await _loadTemplate('demo/images-index.html')
+  var readme_md = await _readTextFile('../README.md')
   
   await _whiteTextFile(
     path.join(__dirname, '../index.html'),
-    template(index_template, {
+    renderIndex({
+      breadcrumb: [],
       page: {
         BASE_HREF,
         CSS_BASE,
         title: 'Aplazame | Assets',
-        body: marked(readme_md),
+        main: marked(readme_md),
         body_class: '_md-index',
       },
     })
@@ -105,17 +121,19 @@ async function writeIndex () {
 }
 
 async function writeBannersIndex () {
-  var index_template = await _readTextFile( path.join(__dirname, 'demo/images-index.html') )
-  var readme_md = await _readTextFile( path.join(__dirname, '../banners/README.md') )
+  var renderIndex = await _loadTemplate('demo/images-index.html')
+  var readme_md = await _readTextFile('../banners/README.md')
   
   await _whiteTextFile(
     path.join(__dirname, '../banners/index.html'),
-    template(index_template, {
+    renderIndex({
+      cwd: 'banners',
+      breadcrumb: [],
       page: {
         BASE_HREF: BASE_HREF + 'banners/',
         CSS_BASE,
         title: 'Aplazame | Banners',
-        body: marked(readme_md),
+        main: marked(readme_md),
         body_class: '_md-index',
       },
     })
@@ -124,7 +142,9 @@ async function writeBannersIndex () {
 
 Promise.all([
   writeImagesTable('logos'),
-  glob('banners/*').then( (directories) => Promise.all(directories.map(writeImagesTable)) ),
+  glob('banners/*', { ignore: '{,**/}*.{html,md}' }).then( (directories) =>
+    Promise.all(directories.map(writeImagesTable))
+  ),
   writeIndex(),
   writeBannersIndex(),
 ])

@@ -2,7 +2,7 @@
 version: 2.1
 
 orbs:
-    s3: aplazame/s3@0.0.14
+    s3: aplazame/s3@0.0.15
 
 jobs:
     build:
@@ -43,16 +43,19 @@ workflows:
             bucket_name: cdn.aplazame.com
             src: favicons
             dest: assets/favicons
+            cache_control: public, max-age:3600
 
         - s3/folder:
             bucket_name: cdn.aplazame.com
             src: logos
             dest: assets/logos
+            cache_control: public, max-age:3600
 
         - s3/folder:
             bucket_name: cdn.aplazame.com
             src: banners
             dest: assets/banners
+            cache_control: public, max-age:3600
 
         - s3/file:
             bucket_name: cdn.aplazame.com

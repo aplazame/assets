@@ -52,7 +52,7 @@ height: ${ file.dimensions.height }px</code></pre>
       }
 
       if( window.Clipboard ) {
-        navigator.clipboard.writeText(newClip).then(function() {
+        navigator.permissions.query({name: "clipboard-write"}).then(function() {
           new Clipboard(button_el, {
             target: function() {
               console.log('Clipboard target', input_el)

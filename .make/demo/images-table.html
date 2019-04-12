@@ -18,21 +18,36 @@
 height: ${ file.dimensions.height }px</code></pre>
         </td>
     </tr>
-    <tr class="_link">
-      <td colspan="2">
-        <input id="input-${$index}" type="text" value="${ file.fullpath }"></input>
-        <!-- <button data-clipboard-target="#input-${$index}">⎘</button> -->
+    <tr>
+      <td class="_link" colspan="2">
+        <input type="text" value="${ file.fullpath }"></input>
+        <div class="-copied-text">copied!</div>
+        <button>⎘</button>
       </td>
     </tr>
     {/}
   </tbody>
   </table>
 
-  <script src="https://cdn.rawgit.com/zenorocha/clipboard.js/v2.0.0/dist/clipboard.min.js" async defer></script>
+  <script>
+    [].forEach.call(document.querySelectorAll('td._link'), function (td_el) {
+      var input_el = td_el.querySelector('input')
+      var button_el = td_el.querySelector('button')
 
+      button_el.addEventListener('click', function () {
+        input_el.select()
+        var success = document.execCommand("copy")
+        if( success ) {
+          td_el.className = '_link _copied-ok'
+          button_el.textContent = '👍'
+          setTimeout(function () {
+            td_el.className = '_link'
+            button_el.textContent = '⎘'
+          }, 1600)
+        }
+      })
 
-  <!-- <script>
-    [].forEach.call(document.querySelectorAll('td > input'), function (input_el) {
-      new Clipboard(input_el)
+      console.log('td', td_el)
+      // new Clipboard(input_el)
     })
-  </script> -->
+  </script>

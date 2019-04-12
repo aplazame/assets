@@ -95,7 +95,7 @@ table.images-list
   tr._bg-dark td._img
     background-color: #333a3e
 
-  tr._link td
+  td._link
     border-top: 1px solid #eee
     border-bottom: 1px solid #ddd
 
@@ -109,6 +109,24 @@ table.images-list
       height: 40px
 
     position: relative
+
+    .-copied-text
+      position: absolute
+      top: 0
+      right: 0
+      display: flex
+      align-items: center
+      height: 40px
+      transform: translateX(0)
+      opacity: 0
+      transition: opacity 0.1s linear, transform 0.1s linear
+      padding: 0 12px
+      // justify-content: center
+
+    &._copied-ok .-copied-text
+      transform: translateX(-40px)
+      opacity: 1
+
     button
       // display: flex
       // justify-content: center
@@ -122,13 +140,16 @@ table.images-list
       height: 40px
       font-size: 28px
       cursor: pointer
-      background: transparent
+      background: white
       border: 0
       border-left: 1px solid #eee
       outline: 0
 
       &:active
         background: rgba(#333a3e, 0.3)
+
+    &._copied-ok button
+      font-size: 20px
 
   a._link
     color: #267bbd

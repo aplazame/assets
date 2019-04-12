@@ -30,7 +30,7 @@ height: ${ file.dimensions.height }px</code></pre>
   </table>
 
   <script>
-  (function (lang, texts) {
+  (function (lang, texts, is_touch_device) {
 
     texts = texts[lang]
 
@@ -64,25 +64,21 @@ height: ${ file.dimensions.height }px</code></pre>
         })
       }
 
-      // if( window.Clipboard ) {
-      //   navigator.permissions.query({name: "clipboard-write"}).then(function() {
-      //     new Clipboard(button_el, {
-      //       target: function() {
-      //         console.log('Clipboard target', input_el)
-      //         return input_el
-      //       }
-      //     }).on('success', _onSuccess)
-      //   }, _initClipboard)
-      // } else {
-      //   _initClipboard()
-      // }
-      _initClipboard()
+      if( is_touch_device && window.clipboard ) {
+        navigator.permissions.query({name: "clipboard-write"}).then(function() {
+          button_el.addEventListener('click', function () {
+            navigator.clipboard.writeText(input_el.value).then(_onSuccess)
+          })
+        }, _initClipboard)
+      } else {
+        _initClipboard()
+      }
 
       
     })
   })(navigator.language || navigator.userLanguage || 'en', {
     en: { copied: 'copied!', tab_image: 'Image', tab_size: 'Size' },
     es: { copied: 'copiado!', tab_image: 'Imagen', tab_size: 'Tamaño' },
-  })
+  }, 'ontouchstart' in window || navigator.maxTouchPoints )
 
   </script>

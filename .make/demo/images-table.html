@@ -34,17 +34,29 @@ height: ${ file.dimensions.height }px</code></pre>
       var input_el = td_el.querySelector('input')
       var button_el = td_el.querySelector('button')
 
+      function _onSuccess () {
+        td_el.className = '_link _copied-ok'
+        button_el.textContent = '👍'
+        setTimeout(function () {
+          td_el.className = '_link'
+          button_el.textContent = '⎘'
+        }, 1600)
+      }
+
+      if( window.Clipboard ) {
+        console.log('Clipboard in window')
+        return new Clipboard(button_el, {
+          target: function() {
+            console.log('Clipboard target', input_el)
+            return input_el
+          }
+        }).on('success', _onSuccess)
+      }
+
       button_el.addEventListener('click', function () {
         input_el.select()
         var success = document.execCommand("copy")
-        if( success ) {
-          td_el.className = '_link _copied-ok'
-          button_el.textContent = '👍'
-          setTimeout(function () {
-            td_el.className = '_link'
-            button_el.textContent = '⎘'
-          }, 1600)
-        }
+        if( success ) _onSuccess()
       })
     })
   </script>

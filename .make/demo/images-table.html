@@ -27,56 +27,56 @@ height: ${ file.dimensions.height }px</code></pre>
     </tr>
     {/}
   </tbody>
-  </table>
+</table>
 
-  <script>
-  (function (lang, texts, is_touch_device) {
+<script>
+(function (lang, texts, is_touch_device) {
 
-    texts = texts[lang]
+  texts = texts[lang]
 
-    function _setText(el, text) {
-      el.textContent = text
+  function _setText(el, text) {
+    el.textContent = text
+  }
+
+  _setText( document.querySelector('table > thead > tr > th:nth-child(1)'), texts.tab_image )
+  _setText( document.querySelector('table > thead > tr > th:nth-child(2)'), texts.tab_size )
+
+  ;[].forEach.call(document.querySelectorAll('td._link'), function (td_el) {
+    var input_el = td_el.querySelector('input')
+    var button_el = td_el.querySelector('button')
+
+    _setText( td_el.querySelector('.-copied-text'), texts.copied )
+
+    function _onSuccess () {
+      td_el.classList.add('_copied-ok')
+      setTimeout(function () {
+        td_el.classList.remove('_copied-ok')
+      }, 1600)
     }
 
-    _setText( document.querySelector('table > thead > tr > th:nth-child(1)'), texts.tab_image )
-    _setText( document.querySelector('table > thead > tr > th:nth-child(2)'), texts.tab_size )
+    function _initClipboard () {
+      button_el.addEventListener('click', function () {
+        input_el.select()
+        var success = document.execCommand("copy")
+        if( success ) _onSuccess()
+      })
+    }
 
-    ;[].forEach.call(document.querySelectorAll('td._link'), function (td_el) {
-      var input_el = td_el.querySelector('input')
-      var button_el = td_el.querySelector('button')
-
-      _setText( td_el.querySelector('.-copied-text'), texts.copied )
-
-      function _onSuccess () {
-        td_el.classList.add('_copied-ok')
-        setTimeout(function () {
-          td_el.classList.remove('_copied-ok')
-        }, 1600)
-      }
-
-      function _initClipboard () {
+    if( is_touch_device && navigator.clipboard && navigator.permissions ) {
+      navigator.permissions.query({name: "clipboard-write"}).then(function() {
         button_el.addEventListener('click', function () {
-          input_el.select()
-          var success = document.execCommand("copy")
-          if( success ) _onSuccess()
+          navigator.clipboard.writeText(input_el.value).then(_onSuccess)
         })
-      }
+      }, _initClipboard)
+    } else {
+      _initClipboard()
+    }
 
-      if( is_touch_device && navigator.clipboard && navigator.permissions ) {
-        navigator.permissions.query({name: "clipboard-write"}).then(function() {
-          button_el.addEventListener('click', function () {
-            navigator.clipboard.writeText(input_el.value).then(_onSuccess)
-          })
-        }, _initClipboard)
-      } else {
-        _initClipboard()
-      }
+    
+  })
+})(navigator.language || navigator.userLanguage || 'en', {
+  en: { copied: 'copied!', tab_image: 'Image', tab_size: 'Size' },
+  es: { copied: 'copiado!', tab_image: 'Imagen', tab_size: 'Tamaño' },
+}, 'ontouchstart' in window || navigator.maxTouchPoints ) // from: https://stackoverflow.com/questions/4817029/whats-the-best-way-to-detect-a-touch-screen-device-using-javascript
 
-      
-    })
-  })(navigator.language || navigator.userLanguage || 'en', {
-    en: { copied: 'copied!', tab_image: 'Image', tab_size: 'Size' },
-    es: { copied: 'copiado!', tab_image: 'Imagen', tab_size: 'Tamaño' },
-  }, 'ontouchstart' in window || navigator.maxTouchPoints )
-
-  </script>
+</script>

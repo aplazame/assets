@@ -54,11 +54,11 @@ height: ${ file.dimensions.height }px</code></pre>
       if( window.Clipboard ) {
         navigator.clipboard.writeText(newClip).then(function() {
           new Clipboard(button_el, {
-          target: function() {
-            console.log('Clipboard target', input_el)
-            return input_el
-          }
-        }).on('success', _onSuccess)
+            target: function() {
+              console.log('Clipboard target', input_el)
+              return input_el
+            }
+          }).on('success', _onSuccess)
         }, _clipboardFallback)
       } else {
         _clipboardFallback()

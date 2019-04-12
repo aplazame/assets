@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>${ page.title }</title>
 
-  <link rel="stylesheet" href="${ page.CSS_BASE }images.css" />
+  <link rel="stylesheet" href="${ page.CSS_BASE }images.css?t=$build{time}" />
 </head>
 <body class="${ page.body_class || '' }">
   $if{ breadcrumb }<header>

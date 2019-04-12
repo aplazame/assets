@@ -27,6 +27,16 @@ template.cmd('cdn', function (expression, scope) {
 
 }, true)
 
+var build = {
+  time: Date.now(),
+}
+
+template.cmd('build', function (expression) {
+
+  return build[expression.trim()]
+
+}, true)
+
 function _readTextFile (filepath) {
     return new Promise(function (resolve, reject) {
         fs.readFile( path.join(__dirname, filepath), 'utf8', function (err, data) {

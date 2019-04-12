@@ -43,7 +43,7 @@ height: ${ file.dimensions.height }px</code></pre>
         }, 1600)
       }
 
-      function _clipboardFallback () {
+      function _initClipboard () {
         button_el.addEventListener('click', function () {
           input_el.select()
           var success = document.execCommand("copy")
@@ -51,18 +51,19 @@ height: ${ file.dimensions.height }px</code></pre>
         })
       }
 
-      if( window.Clipboard ) {
-        navigator.permissions.query({name: "clipboard-write"}).then(function() {
-          new Clipboard(button_el, {
-            target: function() {
-              console.log('Clipboard target', input_el)
-              return input_el
-            }
-          }).on('success', _onSuccess)
-        }, _clipboardFallback)
-      } else {
-        _clipboardFallback()
-      }
+      // if( window.Clipboard ) {
+      //   navigator.permissions.query({name: "clipboard-write"}).then(function() {
+      //     new Clipboard(button_el, {
+      //       target: function() {
+      //         console.log('Clipboard target', input_el)
+      //         return input_el
+      //       }
+      //     }).on('success', _onSuccess)
+      //   }, _initClipboard)
+      // } else {
+      //   _initClipboard()
+      // }
+      _initClipboard()
 
       
     })

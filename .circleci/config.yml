@@ -41,6 +41,11 @@ workflows:
 
         - s3/folder:
             bucket_name: cdn.aplazame.com
+            src: favicons
+            dest: assets/favicons
+
+        - s3/folder:
+            bucket_name: cdn.aplazame.com
             src: logos
             dest: assets/logos
 

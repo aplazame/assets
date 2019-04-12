@@ -22,7 +22,7 @@ height: ${ file.dimensions.height }px</code></pre>
       <td class="_link" colspan="2">
         <input type="text" value="${ file.fullpath }"></input>
         <div class="-copied-text"></div>
-        <button>⎘</button>
+        <button></button>
       </td>
     </tr>
     {/}
@@ -48,11 +48,9 @@ height: ${ file.dimensions.height }px</code></pre>
       _setText( td_el.querySelector('.-copied-text'), texts.copied )
 
       function _onSuccess () {
-        td_el.className = '_link _copied-ok'
-        button_el.textContent = '👍'
+        td_el.classList.add('_copied-ok')
         setTimeout(function () {
-          td_el.className = '_link'
-          button_el.textContent = '⎘'
+          td_el.classList.remove('_copied-ok')
         }, 1600)
       }
 

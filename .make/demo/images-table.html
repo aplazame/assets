@@ -21,7 +21,7 @@ height: ${ file.dimensions.height }px</code></pre>
     <tr>
       <td class="_link" colspan="2">
         <input type="text" value="${ file.fullpath }"></input>
-        <div class="-copied-text">copied!</div>
+        <div class="-copied-text"></div>
         <button>⎘</button>
       </td>
     </tr>
@@ -30,9 +30,22 @@ height: ${ file.dimensions.height }px</code></pre>
   </table>
 
   <script>
-    [].forEach.call(document.querySelectorAll('td._link'), function (td_el) {
+  (function (lang, texts) {
+
+    texts = texts[lang]
+
+    function _setText(el, text) {
+      el.textContent = text
+    }
+
+    _setText( document.querySelector('table > thead > tr > th:nth-child(1)'), texts.tab_image )
+    _setText( document.querySelector('table > thead > tr > th:nth-child(2)'), texts.tab_size )
+
+    ;[].forEach.call(document.querySelectorAll('td._link'), function (td_el) {
       var input_el = td_el.querySelector('input')
       var button_el = td_el.querySelector('button')
+
+      _setText( td_el.querySelector('.-copied-text'), texts.copied )
 
       function _onSuccess () {
         td_el.className = '_link _copied-ok'
@@ -67,4 +80,9 @@ height: ${ file.dimensions.height }px</code></pre>
 
       
     })
+  })(navigator.language || navigator.userLanguage || 'en', {
+    en: { copied: 'copied!', tab_image: 'Image', tab_size: 'Size' },
+    es: { copied: 'copiado!', tab_image: 'Imagen', tab_size: 'Tamaño' },
+  })
+
   </script>

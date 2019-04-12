@@ -18,7 +18,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "prebuild": "sass --indented .make/demo/images.sass > images.css",
-    "build": "node .make/build.js"
+    "build": "cp -r .make/demo/favicons favicons && node .make/build.js"
   },
   "repository": {
     "type": "git",

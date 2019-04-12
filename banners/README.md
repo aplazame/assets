@@ -2,34 +2,34 @@
 
 [
   ![banner-blue](blue/aplazame-banner-blue-728x90-2x-1456x180.png)
-](./blue/)
+](./blue/#readme)
 
 ## Vulcan
 
 [
   ![banner-vulcan](vulcan/aplazame-banner-vulcan-728x90-2x-1456x180.png)
-](./vulcan/)
+](./vulcan/#readme)
 
 ## White
 
 [
   ![banner-vulcan](white/aplazame-banner-white-728x90-2x-1456x180.png)
-](./white/)
+](./white/#readme)
 
 ## Alt Blue
 
 [
   ![banner-blue](alt-blue/aplazame-banner-alt-blue-728x90-2x-1456x180.png)
-](./alt-blue/)
+](./alt-blue/#readme)
 
 ## Alt Vulcan
 
 [
   ![banner-vulcan](alt-vulcan/aplazame-banner-alt-vulcan-728x90-2x-1456x180.png)
-](./alt-vulcan/)
+](./alt-vulcan/#readme)
 
 ## Alt
 
 [
   ![banner-vulcan](alt/aplazame-banner-alt-728x90-2x-1456x180.png)
-](./alt/)
+](./alt/#readme)

@@ -24,6 +24,7 @@ jobs:
             - favicons
             - banners
             - logos
+            - demo
             - images.css
             - index.html
 

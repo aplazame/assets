@@ -57,6 +57,12 @@ workflows:
             dest: assets/banners
             cache_control: public, max-age:3600
 
+        - s3/folder:
+            bucket_name: cdn.aplazame.com
+            src: demo
+            dest: assets/demo
+            cache_control: public, max-age:3600
+
         - s3/file:
             bucket_name: cdn.aplazame.com
             src: images.css
